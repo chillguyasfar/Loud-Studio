@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Bebas Neue", sans-serif;
+  --font-accent: "Anton", sans-serif;
+  --font-mono: "Space Mono", monospace;
+
+  --color-bg: #0a0a0a;
+  --color-brand-yellow: #FFE600;
+  --color-brand-red: #FF1500;
+  --color-brand-white: #F5F5F0;
+  --color-brand-gray: #1a1a1a;
+  --color-brand-muted: #555555;
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-brand-white font-mono selection:bg-brand-yellow selection:text-bg overflow-x-hidden;
+    cursor: none;
+  }
+
+  /* Hide cursor on touch devices */
+  @media (hover: none) and (pointer: coarse) {
+    body {
+      cursor: auto;
+    }
+  }
+
+  h1, h2, h3 {
+    @apply font-display uppercase tracking-tight;
+  }
+}
+
+@keyframes cautionLoop {
+  from { background-position: 0 0; }
+  to { background-position: 100px 0; }
+}
+
+.caution-tape {
+  background: repeating-linear-gradient(
+    45deg,
+    #FFE600,
+    #FFE600 20px,
+    #0a0a0a 20px,
+    #0a0a0a 40px
+  );
+  background-size: 100px 100px;
+  animation: cautionLoop 2s linear infinite;
+}
+
+.noise-overlay {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.glitch-btn:hover {
+  animation: glitch 0.2s cubic-bezier(.25,.46,.45,.94) both infinite;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-3px, 3px); }
+  40% { transform: translate(-3px, -3px); }
+  60% { transform: translate(3px, 3px); }
+  80% { transform: translate(3px, -3px); }
+  100% { transform: translate(0); }
+}
+
+/* Custom scrollbar for horizontal sections */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
