@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useSpring, useInView } from 'motion/react';
-import { Instagram, Twitter, Youtube, ArrowRight, Star, ArrowDown, Globe } from 'lucide-react';
+import { Instagram, Twitter, Youtube, ArrowRight, Star, ArrowDown, Globe, Plus } from 'lucide-react';
 import Navbar from './components/Navbar';
 
 // --- UTILS ---
@@ -249,16 +249,28 @@ const ServiceRow = ({ num, title, desc, tags }: any) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <motion.div 
-      className="group border-b border-brand-yellow/30 py-8 md:py-12 relative cursor-pointer overflow-hidden transition-colors duration-300 hover:bg-brand-yellow"
+      className={`group border-b border-brand-yellow/30 py-8 md:py-12 relative cursor-pointer overflow-hidden transition-all duration-300 ${isHovered ? 'bg-brand-yellow' : 'bg-transparent'}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => setIsHovered(!isHovered)}
     >
-      <div className="container mx-auto px-6 md:px-12 flex flex-col md:flex-row md:items-center justify-between relative z-10 transition-colors duration-300 group-hover:text-bg">
-         <div className="flex items-center gap-4 md:gap-8">
-            <span className="font-mono text-sm md:text-xl">{num}</span>
-            <span className="text-4xl sm:text-6xl md:text-[8vw] leading-none uppercase font-display">{title}</span>
+      <div className={`container mx-auto px-6 md:px-12 flex flex-col md:flex-row md:items-center justify-between relative z-10 transition-colors duration-300 ${isHovered ? 'text-bg' : 'text-brand-white'}`}>
+         <div className="flex items-center justify-between w-full md:w-auto md:justify-start gap-4 md:gap-8">
+            <div className="flex items-center gap-4 md:gap-8">
+              <span className="font-mono text-sm md:text-xl">{num}</span>
+              <span className="text-4xl sm:text-6xl md:text-[8vw] leading-none uppercase font-display">{title}</span>
+            </div>
+            
+            <div className="md:hidden">
+               <motion.div
+                 animate={{ rotate: isHovered ? 45 : 0 }}
+                 transition={{ type: "spring", stiffness: 200 }}
+               >
+                 <Plus size={32} />
+               </motion.div>
+            </div>
          </div>
+         
          <motion.div 
             initial={{ x: -20, opacity: 0 }}
             animate={isHovered ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }}
@@ -268,7 +280,7 @@ const ServiceRow = ({ num, title, desc, tags }: any) => {
          </motion.div>
       </div>
 
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {isHovered && (
           <motion.div 
             initial={{ height: 0, opacity: 0 }}
@@ -276,11 +288,11 @@ const ServiceRow = ({ num, title, desc, tags }: any) => {
             exit={{ height: 0, opacity: 0 }}
             className="container mx-auto px-6 md:px-12 mt-6 relative z-10"
           >
-            <div className="max-w-2xl text-bg">
-                <p className="text-xl mb-4 font-bold">{desc}</p>
-                <div className="flex gap-2 flex-wrap">
+            <div className="max-w-2xl text-bg pb-6">
+                <p className="text-xl md:text-2xl mb-6 font-bold">{desc}</p>
+                <div className="flex gap-3 flex-wrap">
                   {tags.map((t: string) => (
-                    <span key={t} className="px-3 py-1 border border-bg font-bold text-xs uppercase">{t}</span>
+                    <span key={t} className="px-3 py-1 border-2 border-bg font-bold text-xs uppercase tracking-tighter">{t}</span>
                   ))}
                 </div>
             </div>
