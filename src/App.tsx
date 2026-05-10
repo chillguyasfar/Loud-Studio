@@ -356,6 +356,7 @@ const MainContent = () => {
 
             <motion.button 
                whileHover={{ scale: 1.1, rotate: [0, -1, 1, -1, 1, 0] }}
+               onClick={() => window.open('https://wa.me/923208749433', '_blank')}
                className="px-12 py-6 bg-brand-yellow text-bg font-display text-4xl uppercase hover-trigger glitch-btn shadow-[8px_8px_0_0_#FF1500]"
             >
               LET'S WORK

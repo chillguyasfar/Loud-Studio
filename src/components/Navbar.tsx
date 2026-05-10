@@ -225,6 +225,7 @@ export default function Navbar() {
                                 x: [0, -2, 2, -2, 2, 0],
                                 transition: { x: { duration: 0.2, repeat: 3 } }
                             }}
+                            onClick={() => window.open('https://wa.me/923208749433', '_blank')}
                             className="relative px-6 py-2.5 bg-brand-yellow text-bg font-display text-lg tracking-[0.15em] uppercase hover-trigger cta-btn"
                         >
                             LET'S WORK
