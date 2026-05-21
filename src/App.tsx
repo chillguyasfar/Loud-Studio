@@ -19,6 +19,19 @@ const GrainOverlay = () => (
   </div>
 );
 
+const SectionBg = ({ opacity = 0.1, tint = "bg-bg" }: { opacity?: number; tint?: string }) => (
+  <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+    <div 
+      className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100 mix-blend-overlay"
+      style={{ 
+        backgroundImage: `url('https://i.postimg.cc/PfyLNy0T/a-modern-hip-hop-office-with-a-dark-moody-theme-inspired-by-loud-studio-the.png')`,
+        backgroundAttachment: 'fixed'
+      }}
+    />
+    <div className={`absolute inset-0 ${tint}`} style={{ opacity: 1 - opacity }} />
+  </div>
+);
+
 const CustomCursor = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
@@ -323,6 +336,7 @@ const MainContent = () => {
 
       {/* HERO SECTION */}
       <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32">
+        <SectionBg opacity={0.12} />
         {/* Animated Watermark */}
         <motion.div 
           className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
@@ -382,6 +396,7 @@ const MainContent = () => {
 
       {/* MANIFESTO */}
       <section id="manifesto" className="py-32 bg-bg px-6 relative overflow-hidden">
+         <SectionBg opacity={0.08} />
          {/* Skewed Divider */}
          <div className="absolute top-0 left-0 w-full h-32 bg-brand-gray -skew-y-3 -translate-y-1/2 z-0" />
          
@@ -409,37 +424,41 @@ const MainContent = () => {
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="bg-bg">
-        <div className="container mx-auto px-6 mb-12">
-          <SectionHeading>WHAT WE DO</SectionHeading>
+      <section id="services" className="bg-bg relative overflow-hidden py-32">
+        <SectionBg opacity={0.08} />
+        <div className="relative z-10">
+          <div className="container mx-auto px-6 mb-12">
+            <SectionHeading>WHAT WE DO</SectionHeading>
+          </div>
+          <ServiceRow 
+            num="01" 
+            title="BRANDING" 
+            desc="We build identities that demand respect. From logo systems to brand strategy, we define your vibe."
+            tags={["Visual Identity", "Strategy", "Tone of Voice", "Packaging"]}
+          />
+          <ServiceRow 
+            num="02" 
+            title="WEB DEV" 
+            desc="Cutting edge digital experiences that load fast and look sick. We don't just build sites, we build stations."
+            tags={["React", "Next.js", "Web3", "E-Commerce", "Motion"]}
+          />
+          <ServiceRow 
+            num="03" 
+            title="SOCIAL" 
+            desc="Going viral isn't luck, it's a science. We handle content creation and community management."
+            tags={["Content Strategy", "Video Production", "UGC", "Ads"]}
+          />
         </div>
-        <ServiceRow 
-          num="01" 
-          title="BRANDING" 
-          desc="We build identities that demand respect. From logo systems to brand strategy, we define your vibe."
-          tags={["Visual Identity", "Strategy", "Tone of Voice", "Packaging"]}
-        />
-        <ServiceRow 
-          num="02" 
-          title="WEB DEV" 
-          desc="Cutting edge digital experiences that load fast and look sick. We don't just build sites, we build stations."
-          tags={["React", "Next.js", "Web3", "E-Commerce", "Motion"]}
-        />
-        <ServiceRow 
-          num="03" 
-          title="SOCIAL" 
-          desc="Going viral isn't luck, it's a science. We handle content creation and community management."
-          tags={["Content Strategy", "Video Production", "UGC", "Ads"]}
-        />
       </section>
 
       {/* PORTFOLIO (Horizontal Sticky) */}
       <section id="work" ref={portfolioRef} className="relative h-[300vh] bg-bg">
-         <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
-            <div className="container mx-auto px-6 mb-12">
+         <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden relative">
+            <SectionBg opacity={0.12} />
+            <div className="container mx-auto px-6 mb-12 relative z-10">
                <SectionHeading>THE WORK</SectionHeading>
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center relative z-10">
                <motion.div 
                   style={{ x: springX }}
                   className="flex gap-12 px-[10vw]"
@@ -494,8 +513,9 @@ const MainContent = () => {
       </section>
 
       {/* STATS */}
-      <section className="bg-brand-red py-32 flex items-center overflow-hidden">
-         <div className="container mx-auto flex flex-wrap justify-between gap-12 px-6">
+      <section className="bg-brand-red py-32 flex items-center overflow-hidden relative">
+         <SectionBg opacity={0.25} tint="bg-brand-red" />
+         <div className="container mx-auto flex flex-wrap justify-between gap-12 px-6 relative z-10">
             <div>
               <Counter target={4} suffix="" />
               <p className="text-bg font-bold uppercase text-center mt-2">Projects</p>
@@ -516,8 +536,9 @@ const MainContent = () => {
       </section>
 
       {/* PROCESS */}
-      <section className="py-32 bg-bg px-6">
-         <div className="container mx-auto">
+      <section className="py-32 bg-bg px-6 relative overflow-hidden">
+         <SectionBg opacity={0.1} />
+         <div className="container mx-auto relative z-10">
             <SectionHeading>HOW WE MOVE</SectionHeading>
             <div className="mt-20 flex flex-col gap-24 relative">
                {/* Staircase steps */}
@@ -530,8 +551,9 @@ const MainContent = () => {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="py-32 border-t border-brand-gray bg-bg px-6">
-         <div className="container mx-auto">
+      <section className="py-32 border-t border-brand-gray bg-bg px-6 relative overflow-hidden">
+         <SectionBg opacity={0.08} />
+         <div className="container mx-auto relative z-10">
             <SectionHeading>THE WORD</SectionHeading>
             <div className="space-y-32 mt-20">
                {[
@@ -560,7 +582,8 @@ const MainContent = () => {
 
       {/* FOOTER */}
       <footer className="py-20 bg-bg border-t-2 border-brand-yellow relative overflow-hidden">
-         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12">
+         <SectionBg opacity={0.06} />
+         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12 relative z-10">
            <div className="flex items-center gap-4">
               <div className="p-2 bg-brand-yellow text-bg">
                  <Star fill="currentColor" size={24} />
@@ -712,9 +735,11 @@ const CautionTape = () => (
 const WhyPricing = () => {
   return (
     <section id="pricing" className="py-32 bg-bg relative overflow-hidden">
-      <CautionTape />
-      
-      <div className="container mx-auto px-6 max-w-[1100px] mt-20">
+      <SectionBg opacity={0.1} />
+      <div className="relative z-10">
+        <CautionTape />
+        
+        <div className="container mx-auto px-6 max-w-[1100px] mt-20">
         <motion.p 
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -814,8 +839,9 @@ const WhyPricing = () => {
         </motion.div>
       </div>
 
-      <div className="mt-20">
-        <CautionTape />
+        <div className="mt-20">
+          <CautionTape />
+        </div>
       </div>
     </section>
   );
