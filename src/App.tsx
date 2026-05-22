@@ -466,11 +466,11 @@ const MainContent = () => {
                   {[
                     { 
                       id: "01", 
-                      name: "CHROME BABY", 
-                      cat: "DESIGN", 
+                      name: "AQUA FIX", 
+                      cat: "WEBSITE", 
                       color: "from-brand-yellow/50",
-                      image: "https://i.postimg.cc/tTfr6qnY/chrome-front.png",
-                      link: "https://i.postimg.cc/PxN3Npx0/chrome-baby.png"
+                      image: "https://i.postimg.cc/WzdbpLkY/aquafix-image.png",
+                      link: "https://aqua-fix-ten.vercel.app/"
                     },
                     { 
                       id: "02", 
