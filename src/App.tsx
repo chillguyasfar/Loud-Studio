@@ -498,11 +498,11 @@ const MainContent = () => {
                     },
                     { 
                       id: "05", 
-                      name: "OPEN HEART", 
-                      cat: "DESIGN", 
+                      name: "LUMINA SOLAR", 
+                      cat: "WEBSITE", 
                       color: "from-brand-yellow/80",
-                      image: "https://i.postimg.cc/mZvX2rGy/openheart-front.png",
-                      link: "https://i.postimg.cc/7PFsYLyW/openheart.png"
+                      image: "https://i.postimg.cc/3JHTv4jK/lumina-solar-image.png",
+                      link: "https://lumina-solar-nv78.vercel.app/"
                     },
                   ].map((item) => (
                     <PortfolioCard key={item.id} {...item} />
