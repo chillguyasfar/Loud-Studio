@@ -490,11 +490,11 @@ const MainContent = () => {
                     },
                     { 
                       id: "04", 
-                      name: "AURUM NOIR", 
-                      cat: "DESIGN", 
+                      name: "VULCAN FORGE", 
+                      cat: "WEBSITE", 
                       color: "from-brand-muted/50",
-                      image: "https://i.postimg.cc/tgBvXtX6/aunum-noir-front.png",
-                      link: "https://i.postimg.cc/VspTrRXM/aurum-noir.png"
+                      image: "https://i.postimg.cc/28tB1rT2/Vulcan-forge-image.png",
+                      link: "https://vulcan-forge-eight.vercel.app/"
                     },
                     { 
                       id: "05", 
@@ -671,10 +671,9 @@ const PortfolioCard = ({ id, name, cat, color, image, link }: any) => {
           <img 
             src={image} 
             alt={name} 
-            className="w-full h-full object-contain grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700" 
+            className="w-full h-full object-contain transition-all duration-700" 
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-bg/40 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
         </div>
       )}
 
