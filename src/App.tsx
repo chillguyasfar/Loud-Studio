@@ -466,11 +466,11 @@ const MainContent = () => {
                   {[
                     { 
                       id: "01", 
-                      name: "AQUA FIX", 
+                      name: "EVERGREEN", 
                       cat: "WEBSITE", 
                       color: "from-brand-yellow/50",
-                      image: "https://i.postimg.cc/WzdbpLkY/aquafix-image.png",
-                      link: "https://aqua-fix-ten.vercel.app/"
+                      image: "https://i.postimg.cc/mr988Pym/evergreen-ss.png",
+                      link: "https://evergreen-plum.vercel.app/"
                     },
                     { 
                       id: "02", 
@@ -482,14 +482,6 @@ const MainContent = () => {
                     },
                     { 
                       id: "03", 
-                      name: "GLOBAL FUSION", 
-                      cat: "WEBSITE", 
-                      color: "from-brand-gray/50",
-                      image: "https://i.postimg.cc/kM6YmbL6/Capture.png",
-                      link: "https://globalfusion-uk.com/"
-                    },
-                    { 
-                      id: "04", 
                       name: "VULCAN FORGE", 
                       cat: "WEBSITE", 
                       color: "from-brand-muted/50",
@@ -497,7 +489,23 @@ const MainContent = () => {
                       link: "https://vulcan-forge-eight.vercel.app/"
                     },
                     { 
+                      id: "04", 
+                      name: "GLOBAL FUSION", 
+                      cat: "WEBSITE", 
+                      color: "from-brand-gray/50",
+                      image: "https://i.postimg.cc/kM6YmbL6/Capture.png",
+                      link: "https://globalfusion-uk.com/"
+                    },
+                    { 
                       id: "05", 
+                      name: "AQUA FIX", 
+                      cat: "WEBSITE", 
+                      color: "from-brand-yellow/50",
+                      image: "https://i.postimg.cc/WzdbpLkY/aquafix-image.png",
+                      link: "https://aqua-fix-ten.vercel.app/"
+                    },
+                    { 
+                      id: "06", 
                       name: "LUMINA SOLAR", 
                       cat: "WEBSITE", 
                       color: "from-brand-yellow/80",
@@ -655,38 +663,62 @@ const PortfolioCard = ({ id, name, cat, color, image, link }: any) => {
   return (
     <motion.div 
       whileHover={{ 
-        rotateX: -10, 
-        rotateY: 15, 
-        scale: 1.02,
+        rotateX: -4, 
+        rotateY: 4, 
+        scale: 1.03,
         boxShadow: "20px 20px 0px 0px #FFE600"
       }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       onClick={() => link && window.open(link, '_blank')}
-      className={`w-[280px] sm:w-[350px] md:w-[450px] aspect-[3/4] bg-brand-gray relative p-8 md:p-12 cursor-pointer flex flex-col justify-between overflow-hidden group perspective-1000`}
+      className={`w-[300px] sm:w-[480px] md:w-[650px] lg:w-[750px] aspect-[16/10] bg-brand-gray relative p-6 md:p-10 cursor-pointer flex flex-col justify-between overflow-hidden group perspective-1000 border-2 border-brand-white/10 hover:border-brand-yellow/30`}
     >
-      <div className={`absolute inset-0 bg-gradient-to-br ${color} to-transparent opacity-30 transition-opacity group-hover:opacity-60`} />
+      <div className={`absolute inset-0 bg-gradient-to-br ${color} to-transparent opacity-10 transition-opacity group-hover:opacity-30 z-10 pointer-events-none`} />
       
       {image && (
-        <div className="absolute inset-0 z-0 flex items-center justify-center p-4">
+        <div className="absolute inset-0 z-0 w-full h-full overflow-hidden">
           <img 
             src={image} 
             alt={name} 
-            className="w-full h-full object-contain transition-all duration-700" 
+            className="w-full h-full object-cover object-top transition-all duration-700 group-hover:scale-105" 
             referrerPolicy="no-referrer"
           />
+          {/* Enhanced overlay for high readability contrast on both dark and bright backgrounds */}
+          <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/25 to-transparent opacity-90 group-hover:opacity-85 transition-opacity duration-300" />
         </div>
       )}
 
-      <div className="relative z-10">
-        <span className="text-2xl md:text-4xl font-display text-brand-muted group-hover:text-brand-yellow transition-colors">{id}</span>
+      {/* Top Header Controls (Browser Mock Vibes) */}
+      <div className="relative z-20 flex justify-between items-center">
+        {/* Simple Browser-Mock Style Dots */}
+        <div className="flex gap-1.5 opacity-60 group-hover:opacity-100 transition-opacity">
+          <div className="w-2.5 h-2.5 rounded-full bg-brand-red/70" />
+          <div className="w-2.5 h-2.5 rounded-full bg-brand-yellow/75" />
+          <div className="w-2.5 h-2.5 rounded-full bg-brand-muted/50" />
+        </div>
+
+        <div className="flex items-center gap-2 relative">
+          {/* Animated Glowing Beacon */}
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-yellow opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-yellow"></span>
+          </span>
+          <span className="font-mono text-[9px] md:text-xs tracking-wider text-brand-yellow uppercase bg-bg/90 px-2 py-0.5 rounded border border-brand-yellow/20">LIVE SITE</span>
+        </div>
       </div>
 
-      <div className="relative z-10">
-        <h3 className="text-4xl md:text-6xl mb-2 group-hover:tracking-widest transition-all drop-shadow-2xl">{name}</h3>
-        <span className="font-mono uppercase text-xs md:text-sm tracking-widest">{cat}</span>
+      {/* Title & Category Info Row */}
+      <div className="relative z-20 flex flex-col items-start">
+        <span className="text-xl md:text-3xl font-display text-brand-muted group-hover:text-brand-yellow transition-colors mb-1">{id}</span>
+        <h3 className="text-3xl md:text-5xl font-display uppercase tracking-tight text-white group-hover:text-brand-yellow transition-colors drop-shadow-[0_4px_12px_rgba(0,0,0,0.95)]">
+          {name}
+        </h3>
+        <span className="mt-3 font-mono uppercase text-[9px] md:text-xs tracking-widest text-brand-yellow bg-bg/95 px-2.5 py-1 rounded border border-brand-white/10 shadow-lg">
+          {cat}
+        </span>
       </div>
 
-      <div className="absolute -bottom-10 -right-10 text-[15vw] font-display text-bg/10 select-none group-hover:text-bg transition-colors">
+      {/* Behind content visual background watermark ID */}
+      <div className="absolute -bottom-8 -right-8 text-[12vw] font-display text-bg/10 select-none group-hover:text-bg/30 transition-colors z-10 pointer-events-none">
         {id}
       </div>
     </motion.div>
